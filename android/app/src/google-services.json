@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "537929838200",
+    "project_id": "myaffirmations-71b18",
+    "storage_bucket": "myaffirmations-71b18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537929838200:android:ab3beb9d0463e27e7bc78d",
+        "android_client_info": {
+          "package_name": "com.myaffirmations.daily.postive.affirmations.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "537929838200-f85dl31img10oibs82r7mpqn188higus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmE5iyLhHv557qKI9Z5XJ-6lXgHZRuls0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "537929838200-f85dl31img10oibs82r7mpqn188higus.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

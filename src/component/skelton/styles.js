@@ -1,0 +1,312 @@
+import {StyleSheet} from 'react-native';
+import {isIphoneX} from 'react-native-iphone-x-helper';
+import {ms, s, vs} from 'react-native-size-matters';
+
+export const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: s(10),
+    paddingVertical: vs(20),
+  },
+  containers: {
+    marginHorizontal: isIphoneX() ? s(4) : s(1),
+    marginVertical: isIphoneX() ? vs(10) : vs(0),
+  },
+  container1: {
+    // marginHorizontal: s(10),
+    // paddingVertical: vs(20),
+    marginTop: isIphoneX() ? vs(30) : vs(10),
+  },
+  homeScreenHeaderLine: {
+    width: s(143),
+    height: vs(29),
+  },
+  homeScreenHeaderLineOfCategory: {
+    width: s(143),
+    height: vs(29),
+    // marginLeft: s(10),
+  },
+  allAuthorHeading: {
+    width: s(143),
+    height: vs(29),
+    marginRight: s(80),
+  },
+  homeScreenHeaderSubLine: {
+    width: s(160),
+    height: vs(19),
+    marginTop: vs(5),
+  },
+
+  sliderFirstView: {
+    height: Platform.OS === 'ios' ? vs(260) : vs(260),
+    width: Platform.OS === 'ios' ? s(20) : s(20),
+    borderRadius: 20,
+  },
+  sliderCenterView: {
+    height: Platform.OS === 'ios' ? vs(295) : vs(295),
+    width: Platform.OS === 'ios' ? s(285) : s(285),
+    borderRadius: 20,
+  },
+  sliderLastView: {
+    height: Platform.OS === 'ios' ? vs(260) : vs(260),
+    width: Platform.OS === 'ios' ? s(20) : s(20),
+    borderRadius: 20,
+  },
+  homeHeader: {
+    marginTop: Platform.OS === 'ios' ? 0 : vs(7),
+    paddingBottom: vs(20),
+  },
+  view: {
+    marginTop: isIphoneX() ? vs(20) : vs(0),
+  },
+  category: {
+    marginBottom: vs(10),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: s(20),
+    marginTop: vs(20),
+  },
+  ImageCollectionCategory: {
+    marginBottom: vs(10),
+    flexDirection: 'row',
+    // justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: s(20),
+    marginTop: vs(20),
+    width: s(350),
+  },
+
+  categoryOfSeeAll: {
+    marginBottom: vs(10),
+    flexDirection: 'row',
+    // justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: s(20),
+    marginTop: vs(20),
+  },
+  categoryCir: {
+    height: ms(50),
+    justifyContent: 'center',
+    alignSelf: 'center',
+    width: ms(50),
+    borderRadius: 12,
+  },
+  categoryCirSeeAll: {
+    height: ms(50),
+    width: ms(50),
+    borderRadius: 12,
+  },
+  Quote: {
+    height: isIphoneX() ? vs(250) : vs(250),
+    width: '100%',
+    borderRadius: 5,
+    marginTop: isIphoneX() ? vs(140) : vs(150),
+    justifyContent: 'center',
+  },
+  Author: {
+    height: isIphoneX() ? vs(20) : vs(26),
+    width: '70%',
+    borderRadius: 5,
+    marginTop: isIphoneX() ? vs(10) : vs(10),
+  },
+  rowView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: isIphoneX() ? vs(155) : vs(140),
+  },
+  Swipe: {
+    height: isIphoneX() ? vs(18) : vs(22),
+    width: 250,
+    borderRadius: 5,
+  },
+  Add: {
+    height: isIphoneX() ? vs(40) : vs(50),
+    width: isIphoneX() ? s(40) : s(50),
+    borderRadius: 5,
+  },
+  template: {
+    height: ms(150),
+    width: isIphoneX() ? ms(115) : s(107),
+    marginRight: isIphoneX() ? s(6) : s(5),
+    borderRadius: 15,
+  },
+  seeMoreButton: {
+    width: s(58),
+    height: vs(17),
+  },
+  flatListComponentView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: s(10),
+  },
+  roundFlatListView: {
+    width: ms(70),
+    height: ms(70),
+    borderRadius: 35,
+  },
+  roundFlatListViewTitle: {
+    width: s(44),
+    height: vs(19),
+    marginTop: vs(10),
+  },
+  backIcon: {
+    width: s(50),
+    height: vs(30),
+    borderRadius: 4,
+    marginTop: vs(3),
+  },
+  headerText: {
+    width: s(160),
+    height: vs(30),
+    borderRadius: 4,
+    marginRight: s(25),
+    marginTop: vs(3),
+  },
+  saveText: {
+    width: s(60),
+    height: vs(35),
+    borderRadius: 20,
+  },
+  notification: {
+    width: '100%',
+    height: vs(45),
+    marginTop: vs(30),
+    borderRadius: 6,
+  },
+  notification1: {
+    width: '100%',
+    height: vs(45),
+    marginTop: vs(15),
+    borderRadius: 6,
+  },
+  images: {
+    height: ms(350),
+    width: isIphoneX() ? ms(350) : '100%',
+    borderRadius: 10,
+    marginTop: vs(8),
+    resizeMode: 'contain',
+  },
+  main: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginHorizontal: s(20),
+    marginVertical: vs(10),
+    paddingBottom: vs(30),
+  },
+  viewStyle: {
+    paddingHorizontal: s(12),
+    paddingVertical: vs(5),
+    marginVertical: vs(6),
+    borderRadius: 16,
+    margin: 4,
+    width: s(100),
+    height: vs(35),
+  },
+
+  authorsFlatListView: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: s(75),
+  },
+  authorImagView: {
+    width: ms(72),
+    height: ms(72),
+    // borderWidth: 2,
+    borderRadius: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: vs(15),
+    marginHorizontal: s(5),
+  },
+  authorName: {
+    paddingTop: vs(10),
+    fontSize: 16,
+    fontWeight: '500',
+    textAlign: 'center',
+    color: '#000000',
+  },
+  imageCollectionCategory: {
+    width: ms(326),
+    borderRadius: 20,
+    height: ms(326),
+    marginBottom: 20,
+  },
+  imageCollectionCategoryRow: {
+    width: ms(70),
+    borderRadius: 20,
+    height: ms(50),
+    marginBottom: 20,
+    marginHorizontal: 10,
+  },
+  categoryAllComponent: {
+    width: ms(75),
+    borderRadius: 80,
+    height: ms(75),
+    marginVertical: 10,
+  },
+  authorFlatListView: {
+    marginVertical: vs(8),
+    paddingVertical: vs(10),
+    width: s(310),
+    height: vs(70),
+    borderRadius: 20,
+    paddingHorizontal: s(12),
+  },
+  templateHeader: {
+    height: ms(50),
+    width: ms(50),
+    borderRadius: 12,
+  },
+  templateQuote: {
+    height: vs(30),
+    width: s(300),
+    marginBottom: vs(10),
+  },
+  templateQuote2: {
+    height: vs(30),
+    width: s(260),
+    marginBottom: vs(10),
+  },
+  templateQuote3: {
+    height: vs(30),
+    width: s(230),
+    marginBottom: vs(10),
+  },
+  authorNameDash: {height: vs(5), width: s(80), marginBottom: vs(10)},
+  authorName: {
+    height: vs(30),
+    width: s(100),
+    marginBottom: vs(10),
+    marginLeft: 30,
+  },
+  template2authorName: {
+    height: vs(30),
+    width: s(100),
+    marginBottom: vs(10),
+  },
+  templateFooter: {
+    marginBottom: vs(10),
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: s(50),
+    marginTop: vs(20),
+    width: s(350),
+  },
+  TemplateFooterIcon: {
+    height: ms(58),
+    width: ms(58),
+    borderRadius: 12,
+  },
+  template3Author: {
+    width: ms(120),
+    borderRadius: 60,
+    height: ms(120),
+  },
+  roundCir: {
+    height: ms(50),
+    width: ms(50),
+    borderRadius: 25,
+  },
+});
