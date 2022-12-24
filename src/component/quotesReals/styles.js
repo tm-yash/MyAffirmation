@@ -124,5 +124,8 @@ export const styles = StyleSheet.create({
   },
   footer: {
     width: Platform.OS === 'ios' ? s(270) : s(250),
+    position: 'absolute',
+    bottom: 40,
+    alignSelf: 'center',
   },
 });

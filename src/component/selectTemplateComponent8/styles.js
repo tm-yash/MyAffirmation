@@ -40,13 +40,16 @@ export const styles = StyleSheet.create({
     height: ms(50),
     borderRadius: 12,
   },
+  borderRedius: {
+    borderRadius: 40,
+  },
   yellowBackground: {
     zIndex: 9,
-    height: vs(405),
+    height: vs(420),
     justifyContent: 'center',
     alignItems: 'center',
-    width: s(310),
-    marginTop: vs(100),
+    width: s(300),
+    marginVertical: vs(50),
   },
   selectColorView2: {
     width: ms(45),
@@ -93,16 +96,7 @@ export const styles = StyleSheet.create({
   templateMainView: {
     height: '100%',
   },
-  selectColorMainView: {
-    position: 'absolute',
-    paddingVertical: vs(20),
 
-    backgroundColor: '#ffffff',
-    width: '100%',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    top: Platform.OS === 'ios' ? vs(90) : vs(150),
-  },
   allQuotesVIew: {
     paddingTop: vs(20),
   },
@@ -116,31 +110,6 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     position: 'absolute',
     color: '#000000',
-  },
-  QuoteCancelBtn: {
-    height: vs(60),
-    width: s(153),
-    backgroundColor: '#EEEEEE',
-    borderRadius: 20,
-  },
-  QuoteSaveBtn: {
-    height: vs(60),
-    width: s(153),
-    backgroundColor: '#AA67DD',
-    borderRadius: 20,
-  },
-  buttonView: {
-    paddingBottom: 20,
-  },
-  cancelTitle: {
-    fontSize: 20,
-    color: '#A6A7A6',
-    fontWeight: '600',
-  },
-  saveTitle: {
-    fontSize: 20,
-    color: '#ffffff',
-    fontWeight: '600',
   },
   input: {
     fontWeight: '600',
@@ -181,14 +150,14 @@ export const styles = StyleSheet.create({
     marginTop: isIphoneX() ? vs(6) : vs(0),
     marginBottom: vs(10),
   },
-  HomeScreenNoch: {
-    backgroundColor: '#EEEEEE',
-    width: s(50),
-    height: vs(5),
-    borderRadius: 4,
-    marginBottom: vs(15),
-    alignSelf: 'center',
-  },
+  // HomeScreenNoch: {
+  //   backgroundColor: '#EEEEEE',
+  //   width: s(50),
+  //   height: vs(5),
+  //   borderRadius: 4,
+  //   marginBottom: vs(15),
+  //   alignSelf: 'center',
+  // },
   quoteAndName: {
     // flexDirection: 'column',
     justifyContent: 'center',

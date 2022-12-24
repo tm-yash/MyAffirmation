@@ -78,11 +78,11 @@ const TemplatePreview1 = () => {
                 <View>
                   <Text style={styles.quoteStyles}>{authorQuote}</Text>
                 </View>
-                <View
+                {/* <View
                   style={[CommonStyles.spaceBetween, styles.authorNameView]}>
                   <View style={styles.authorNameDash} />
                   <Text style={styles.authorName}>{authorName}</Text>
-                </View>
+                </View> */}
               </View>
             </View>
             <Image

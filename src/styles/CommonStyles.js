@@ -161,4 +161,52 @@ export const CommonStyles = StyleSheet.create({
     paddingTop: 5,
   },
   footer: {width: 270},
+
+  // BUTTON
+
+  selectColorMainView: {
+    position: 'absolute',
+    paddingVertical: vs(20),
+    backgroundColor: '#ffffff',
+    height: vs(120),
+    width: '100%',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    // top: Platform.OS === 'ios' ? vs(160) : vs(150),
+    bottom: 0,
+  },
+  HomeScreenNoch: {
+    backgroundColor: '#EEEEEE',
+    width: s(50),
+    height: vs(5),
+    borderRadius: 4,
+    marginBottom: vs(15),
+    alignSelf: 'center',
+  },
+  buttonView: {
+    // marginTop: 50,
+    paddingBottom: 20,
+  },
+  QuoteCancelBtn: {
+    height: vs(60),
+    width: s(153),
+    backgroundColor: '#EEEEEE',
+    borderRadius: 20,
+  },
+  cancelTitle: {
+    fontSize: 20,
+    color: '#A6A7A6',
+    fontWeight: '600',
+  },
+  saveTitle: {
+    fontSize: 20,
+    color: '#ffffff',
+    fontWeight: '600',
+  },
+  QuoteSaveBtn: {
+    height: vs(60),
+    width: s(153),
+    backgroundColor: '#AA67DD',
+    borderRadius: 20,
+  },
 });

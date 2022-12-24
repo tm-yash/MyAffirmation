@@ -20,10 +20,11 @@ import {useNavigation} from '@react-navigation/native';
 import {ms} from 'react-native-size-matters';
 import FastImage from 'react-native-fast-image';
 import ImagePicker from 'react-native-image-crop-picker';
+import {showToast} from '../CommonItem/ToastMsg/ToastMsg';
 
 const Template5 = () => {
   const [color, setColor] = useState(['#773B9E', '#BC3098']);
-  const [authorQuote, setAuthorQuote] = useState(null);
+  const [authorQuote, setAuthorQuote] = useState('');
   const [colorContain1, setColorContain1] = useState(false);
   const [colorContain2, setColorContain2] = useState(false);
   const [colorContain3, setColorContain3] = useState(false);
@@ -109,12 +110,16 @@ const Template5 = () => {
   };
 
   const previewDataTemplate5 = () => {
-    navigation.navigate('TemplatePreview5screen', {
-      authorImage,
-      authorQuote,
-      authorName,
-      color,
-    });
+    {
+      authorQuote === ''
+        ? showToast('Enter your Affirmation to get motivated!')
+        : navigation.navigate('TemplatePreview5screen', {
+            authorImage,
+            authorQuote,
+            authorName,
+            color,
+          });
+    }
   };
 
   return (
@@ -158,41 +163,7 @@ const Template5 = () => {
                   placeholder="Enter Your quote here..."
                   keyboardType="default"
                 />
-                <View style={styles.quoteAndName}>
-                  <TextInput
-                    placeholderTextColor="#ffffff"
-                    style={styles.QuoteBackgroundTitle}
-                    onChangeText={setAuthorName}
-                    value={authorName}
-                    placeholder="Author Name..."
-                    keyboardType="default"
-                  />
-                  <TouchableOpacity
-                    onPress={pickSingle}
-                    style={{
-                      backgroundColor: '#ffffff',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      width: ms(50),
-                      borderRadius: 25,
-                      height: ms(50),
-                    }}>
-                    <ImageBackground
-                      style={{
-                        height: ms(45),
-                        width: ms(45),
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
-                      source={Images.addAuthorPhotoIcon}>
-                      <FastImage
-                        source={authorImage}
-                        resizeMode={FastImage.resizeMode.cover}
-                        style={styles.AuthorPhoto}
-                      />
-                    </ImageBackground>
-                  </TouchableOpacity>
-                </View>
+                <View style={styles.quoteAndName}></View>
               </View>
             </View>
 
@@ -220,7 +191,9 @@ const Template5 = () => {
                         <LinearGradient
                           colors={['#F87099', '#AA67DD']}
                           style={[styles.selectColorView1]}>
-                          <LinearGradient colors={['#F87099', '#AA67DD']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#F87099', '#AA67DD']}>
                             <View
                               style={{
                                 height: 43,
@@ -249,7 +222,9 @@ const Template5 = () => {
                             styles.selectColorView2,
                             styles.borderStyle2,
                           ]}>
-                          <LinearGradient colors={['#0F2027', '#2C5364']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#0F2027', '#2C5364']}>
                             <View
                               style={{
                                 height: 43,
@@ -277,7 +252,9 @@ const Template5 = () => {
                             styles.selectColorView3,
                             styles.borderStyle3,
                           ]}>
-                          <LinearGradient colors={['#8A2387', '#F27121']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#8A2387', '#F27121']}>
                             <View
                               style={{
                                 height: 43,
@@ -305,13 +282,14 @@ const Template5 = () => {
                             styles.selectColorView4,
                             styles.borderStyle4,
                           ]}>
-                          <LinearGradient colors={['#0f0c29', '#302b63']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#0f0c29', '#302b63']}>
                             <View
                               style={{
                                 height: 43,
                                 width: 43,
                                 borderRadius: 20,
-                                // backgroundColor: '#AA67DD',
                                 borderColor: '#ffffff',
                                 borderWidth: 2,
                               }}
@@ -334,7 +312,9 @@ const Template5 = () => {
                             styles.selectColorView5,
                             styles.borderStyle5,
                           ]}>
-                          <LinearGradient colors={['#6D6027', '#D3CBB8']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#6D6027', '#D3CBB8']}>
                             <View
                               style={{
                                 height: 43,
@@ -363,13 +343,14 @@ const Template5 = () => {
                             styles.selectColorView6,
                             styles.borderStyle6,
                           ]}>
-                          <LinearGradient colors={['#F1F2B5', '#135058']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#F1F2B5', '#135058']}>
                             <View
                               style={{
                                 height: 43,
                                 width: 43,
                                 borderRadius: 20,
-                                // backgroundColor: '#AA67DD',
                                 borderColor: '#ffffff',
                                 borderWidth: 2,
                               }}
@@ -390,24 +371,24 @@ const Template5 = () => {
           </View>
         </TouchableWithoutFeedback>
 
-        <View>
-          <View style={styles.selectColorMainView}>
-            <View style={styles.HomeScreenNoch} />
+        {/* <View> */}
+        <View style={CommonStyles.selectColorMainView}>
+          <View style={CommonStyles.HomeScreenNoch} />
 
-            <View style={[CommonStyles.spaceEvenly, styles.buttonView]}>
-              <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                style={[CommonStyles.center, styles.QuoteCancelBtn]}>
-                <Text style={styles.cancelTitle}>Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => previewDataTemplate5()}
-                style={[CommonStyles.center, styles.QuoteSaveBtn]}>
-                <Text style={styles.saveTitle}>Preview</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={[CommonStyles.spaceEvenly, CommonStyles.buttonView]}>
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={[CommonStyles.center, CommonStyles.QuoteCancelBtn]}>
+              <Text style={CommonStyles.cancelTitle}>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => previewDataTemplate5()}
+              style={[CommonStyles.center, CommonStyles.QuoteSaveBtn]}>
+              <Text style={CommonStyles.saveTitle}>Preview</Text>
+            </TouchableOpacity>
           </View>
         </View>
+        {/* </View> */}
       </LinearGradient>
     </View>
   );

@@ -25,7 +25,7 @@ import {s, vs} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
 import {CommonStyles} from '../../styles/CommonStyles';
 import Slider from '@react-native-community/slider';
-import DragTextEditor from 'react-native-drag-text-editor';
+import {DragTextEditor} from 'react-native-drag-text-editor';
 import {COLORS} from '../../styles/Colors';
 import {FONTS} from '../common/Fonts';
 import {Colors} from '../../styles/Colors';
@@ -376,7 +376,7 @@ const MakeYourQuote = () => {
               return (
                 <TouchableOpacity
                   onPress={() => aspectRatio(varRatio)}
-                  style={({backgroundColor: '#ffffff'}, [styles.box])}>
+                  style={({backgroundColor: '#ffffff'}, [styles.boxSquor])}>
                   <Image source={varRatio?.icon} style={styles.ratioIcon} />
                   <Text style={styles.ratioText}>{varRatio.text}</Text>
                 </TouchableOpacity>
@@ -565,6 +565,7 @@ const MakeYourQuote = () => {
     markers[index].defColor = colorOfArray;
     setArrayTextData(markers);
   };
+
   const fontStyling = fontsOfArray => {
     const fontStyle = textInAction;
     const markers = [...arrayTextData];
@@ -599,8 +600,33 @@ const MakeYourQuote = () => {
   };
 
   const ADDED_TEXTS = arrayTextData.map((ID, index) => {
+    const viewComponent = () => <View style={styles.cornerStyles} />;
+
+    const _cornerComponent = [
+      {
+        side: 'TR',
+        customCornerComponent: () => viewComponent(),
+      },
+    ];
+
+    const _rotateComponent = {
+      side: 'left',
+      customRotationComponent: () => viewComponent(),
+    };
+
+    const _resizerSnapPoints = ['right', 'left'];
+
     return (
       <DragTextEditor
+        key={index}
+        visible={true}
+        resizerSnapPoints={_resizerSnapPoints}
+        cornerComponents={_cornerComponent}
+        rotationComponent={_rotateComponent}
+        externalTextStyles={styles.textStyles}
+        externalBorderStyles={styles.borderStyles}
+        TopRightAction={() => removeText(ID.defTextID)}
+        centerPress={() => setTextInAction(ID.defTextID)}
         minWidth={100}
         minHeight={100}
         w={200}
@@ -613,8 +639,6 @@ const MakeYourQuote = () => {
         LetterSpacing={ID.defLetterSpacing}
         FontSize={ID.defFontSize}
         FontFamily={ID.defFontFamily}
-        TopRightAction={() => removeText(ID.defTextID)}
-        centerPress={() => setTextInAction(ID.defTextID)}
         isDraggable={true}
         isResizable={true}
         onDragStart={() => console.log('-Drag Started')}

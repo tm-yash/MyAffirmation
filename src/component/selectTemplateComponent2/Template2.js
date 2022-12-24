@@ -19,10 +19,11 @@ import {useNavigation} from '@react-navigation/native';
 import {s, ms} from 'react-native-size-matters';
 import FastImage from 'react-native-fast-image';
 import ImagePicker from 'react-native-image-crop-picker';
+import {showToast} from '../CommonItem/ToastMsg/ToastMsg';
 
 const Template2 = () => {
   const [color, setColor] = useState(['#6A96FF', '#9558FF']);
-  const [authorQuote, setAuthorQuote] = useState(null);
+  const [authorQuote, setAuthorQuote] = useState('');
   const [authorName, setAuthorName] = useState(null);
   const [colorContain1, setColorContain1] = useState(false);
   const [colorContain2, setColorContain2] = useState(false);
@@ -108,12 +109,16 @@ const Template2 = () => {
   };
 
   const previewDataTemplate1 = () => {
-    navigation.navigate('TemplatePreview2screen', {
-      authorImage,
-      authorQuote,
-      authorName,
-      color,
-    });
+    {
+      authorQuote === ''
+        ? showToast('Enter your Affirmation to get motivated!')
+        : navigation.navigate('TemplatePreview2screen', {
+            authorImage,
+            authorQuote,
+            authorName,
+            color,
+          });
+    }
   };
 
   return (
@@ -154,40 +159,6 @@ const Template2 = () => {
                   placeholder="Enter Your quote here..."
                   keyboardType="default"
                 />
-                <TextInput
-                  // multiline={true}
-                  placeholderTextColor="#ffffff"
-                  style={styles.QuoteBackgroundTitle}
-                  onChangeText={setAuthorName}
-                  value={authorName}
-                  placeholder="Author Name..."
-                  keyboardType="default"
-                />
-                <TouchableOpacity
-                  onPress={pickSingle}
-                  style={{
-                    height: ms(50),
-                    width: ms(50),
-                    backgroundColor: '#ffffff',
-                    borderRadius: 12,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                  <ImageBackground
-                    style={{
-                      height: ms(45),
-                      width: ms(45),
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
-                    source={Images.addAuthorPhotoIcon}>
-                    <FastImage
-                      source={authorImage}
-                      resizeMode={FastImage.resizeMode.cover}
-                      style={styles.AuthorPhoto}
-                    />
-                  </ImageBackground>
-                </TouchableOpacity>
               </View>
             </View>
 
@@ -215,7 +186,9 @@ const Template2 = () => {
                         <LinearGradient
                           colors={['#F87099', '#AA67DD']}
                           style={[styles.selectColorView1]}>
-                          <LinearGradient colors={['#F87099', '#AA67DD']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#F87099', '#AA67DD']}>
                             <View
                               style={{
                                 height: 43,
@@ -243,7 +216,9 @@ const Template2 = () => {
                             styles.selectColorView2,
                             styles.borderStyle2,
                           ]}>
-                          <LinearGradient colors={['#0F2027', '#2C5364']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#0F2027', '#2C5364']}>
                             <View
                               style={{
                                 height: 43,
@@ -271,7 +246,9 @@ const Template2 = () => {
                             styles.selectColorView3,
                             styles.borderStyle3,
                           ]}>
-                          <LinearGradient colors={['#8A2387', '#F27121']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#8A2387', '#F27121']}>
                             <View
                               style={{
                                 height: 43,
@@ -299,7 +276,9 @@ const Template2 = () => {
                             styles.selectColorView4,
                             styles.borderStyle4,
                           ]}>
-                          <LinearGradient colors={['#0f0c29', '#302b63']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#0f0c29', '#302b63']}>
                             <View
                               style={{
                                 height: 43,
@@ -327,7 +306,9 @@ const Template2 = () => {
                             styles.selectColorView5,
                             styles.borderStyle5,
                           ]}>
-                          <LinearGradient colors={['#6D6027', '#D3CBB8']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#6D6027', '#D3CBB8']}>
                             <View
                               style={{
                                 height: 43,
@@ -355,7 +336,9 @@ const Template2 = () => {
                             styles.selectColorView6,
                             styles.borderStyle6,
                           ]}>
-                          <LinearGradient colors={['#F1F2B5', '#135058']}>
+                          <LinearGradient
+                            style={styles.borderRedius}
+                            colors={['#F1F2B5', '#135058']}>
                             <View
                               style={{
                                 height: 43,
@@ -380,23 +363,23 @@ const Template2 = () => {
             </Modal>
           </View>
         </TouchableWithoutFeedback>
-        <View>
-          <View style={styles.selectColorMainView}>
-            <View style={styles.HomeScreenNoch} />
-            <View style={[CommonStyles.spaceEvenly, styles.buttonView]}>
-              <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                style={[CommonStyles.center, styles.QuoteCancelBtn]}>
-                <Text style={styles.cancelTitle}>Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => previewDataTemplate1()}
-                style={[CommonStyles.center, styles.QuoteSaveBtn]}>
-                <Text style={styles.saveTitle}>Preview</Text>
-              </TouchableOpacity>
-            </View>
+
+        <View style={CommonStyles.selectColorMainView}>
+          <View style={CommonStyles.HomeScreenNoch} />
+          <View style={[CommonStyles.spaceEvenly, CommonStyles.buttonView]}>
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={[CommonStyles.center, CommonStyles.QuoteCancelBtn]}>
+              <Text style={CommonStyles.cancelTitle}>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => previewDataTemplate1()}
+              style={[CommonStyles.center, CommonStyles.QuoteSaveBtn]}>
+              <Text style={CommonStyles.saveTitle}>Preview</Text>
+            </TouchableOpacity>
           </View>
         </View>
+
         <Image
           style={styles.bgObject2}
           source={Images.homeScreenTemplateQuote2}

@@ -95,6 +95,17 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F3F3F4',
     borderRadius: 30,
   },
+  boxSquor: {
+    height: vs(50),
+    width: s(50),
+    margin: ms(4),
+    borderRadius: 5,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F3F3F4',
+    borderRadius: 12,
+  },
   filterTitle: {
     textAlign: 'center',
     // letterSpacing: 2,
@@ -241,6 +252,33 @@ export const styles = StyleSheet.create({
     height: ms(45),
     borderRadius: 25,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  // NEW STYLE
+
+  borderStyles: {
+    borderStyle: 'solid',
+    borderColor: '#ffff',
+    borderWidth: 2,
+  },
+  textStyles: {
+    color: '#000',
+  },
+  cornerStyles: {
+    padding: 8,
+    borderWidth: 1,
+    borderRadius: 8,
+    backgroundColor: 'red',
+    borderColor: 'red',
+  },
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: 'white',
+  },
+  contentContainer: {
+    flex: 1,
     alignItems: 'center',
   },
 });

@@ -27,7 +27,6 @@ import Clipboard from '@react-native-clipboard/clipboard';
 const ITEM_HEIGHT = Dimensions.get('window').height;
 
 const QuotesReals = () => {
-  const _containerRef = useRef(null);
   const [images, setImage] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const flatListRef = useRef(null);
@@ -54,7 +53,9 @@ const QuotesReals = () => {
     setImage(imageResponse.data);
   };
 
-  const renderItem = ({item, index}) => {
+  const QuoteItem = ({item, index}) => {
+    const _containerRef = useRef(null);
+
     const clipboard = () => {
       Clipboard.setString(item.quotes);
       showToast('Quote copied');
@@ -86,6 +87,29 @@ const QuotesReals = () => {
       }
     };
 
+    const handleShare = () => {
+      setTimeout(async () => {
+        if (_containerRef) {
+          try {
+            const uri = await captureRef(_containerRef, {
+              format: 'jpg',
+              quality: 1,
+            });
+            console.log('->>>>>', uri);
+            await Share.open({
+              url: uri,
+            });
+          } catch (e) {
+            if (e.error !== 'User did not share') {
+              console.log(
+                'We are so sorry, but something unexpected happened :(',
+              );
+            }
+          }
+        }
+      }, 1000);
+    };
+
     const downloadImage = async () => {
       setTimeout(async () => {
         try {
@@ -110,58 +134,19 @@ const QuotesReals = () => {
       }, 1000);
     };
 
-    const handleShare = () => {
-      setTimeout(async () => {
-        if (_containerRef) {
-          try {
-            const uri = await captureRef(_containerRef, {
-              format: 'jpg',
-              quality: 1,
-            });
-            console.log('->>>>>', uri);
-            await Share.open({
-              url: uri,
-            });
-          } catch (e) {
-            if (e.error !== 'User did not share') {
-              console.log(
-                'We are so sorry, but something unexpected happened :(',
-              );
-            }
-          }
-        }
-      }, 1000);
-    };
-
     return (
-      <View
-        key={index}
-        ref={_containerRef}
-        style={[
-          styles.quoteOfTHeDayScreen,
-          {backgroundColor: item.category.colour},
-        ]}>
-        <View style={styles.goBackHeaderView}>
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={[CommonStyles.center, styles.goBackIconBorder]}>
-            <Image
-              style={{tintColor: '#ffffff'}}
-              source={Images.goBackButton}
-            />
-          </TouchableOpacity>
-        </View>
-
-        <View style={{marginVertical: vs(40)}}>
-          <Image style={styles.bgObject1} source={Images.reelSectionObject1} />
-          <View style={styles.quoteViewStyle}>
-            <Image style={styles.leftQuote} source={Images.leftQuoteIcon} />
-            <View>
-              <Text style={styles.quoteStyles}>{item.quotes}</Text>
-            </View>
-            <Image style={styles.rightQuote} source={Images.rightQuoteIcon} />
+      <View style={[{backgroundColor: item.category.colour}]}>
+        <View>
+          <View style={styles.goBackHeaderView}>
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={[CommonStyles.center, styles.goBackIconBorder]}>
+              <Image
+                style={{tintColor: '#ffffff'}}
+                source={Images.goBackButton}
+              />
+            </TouchableOpacity>
           </View>
-          <Image style={styles.bgObject2} source={Images.reelSectionObject2} />
         </View>
 
         <View style={styles.footer}>
@@ -196,9 +181,33 @@ const QuotesReals = () => {
             </View>
           </SafeAreaView>
         </View>
+        <View style={styles.quoteOfTHeDayScreen} key={index}>
+          <View ref={_containerRef} style={{marginVertical: vs(40), flex: 1}}>
+            <Image
+              style={styles.bgObject1}
+              source={Images.reelSectionObject1}
+            />
+            <View style={styles.quoteViewStyle}>
+              <Image style={styles.leftQuote} source={Images.leftQuoteIcon} />
+              <View>
+                <Text style={styles.quoteStyles}>{item.quotes}</Text>
+              </View>
+              <Image style={styles.rightQuote} source={Images.rightQuoteIcon} />
+            </View>
+            <Image
+              style={styles.bgObject2}
+              source={Images.reelSectionObject2}
+            />
+          </View>
+        </View>
       </View>
     );
   };
+
+  const renderItem = ({item, index}) => {
+    return <QuoteItem item={item} index={index} />;
+  };
+
   const onRefreshing = () => {
     setRefreshing(true);
     getImage();

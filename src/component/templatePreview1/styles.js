@@ -56,7 +56,6 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     height: ms(53),
     marginBottom: s(20),
-    backgroundColor: 'red',
   },
   authorNameDash: {
     width: s(46),

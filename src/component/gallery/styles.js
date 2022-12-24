@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
   },
   BackgroundImag: {
     width: Platform.OS === ' ios' ? s(150) : s(150),
-    height: Platform.OS === 'ios' ? vs(155) : vs(163),
+    height: Platform.OS === 'ios' ? vs(155) : vs(178),
   },
   centeredView: {
     flex: 1,

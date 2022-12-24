@@ -26,7 +26,6 @@ const AuthorReel = () => {
   const route = useRoute();
   const _containerRef = useRef(null);
   const navigation = useNavigation();
-  // const flatListRef = useRef(null);
 
   useEffect(() => {
     getAuthorQuote();

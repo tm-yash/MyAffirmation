@@ -110,4 +110,6 @@ export const styles = StyleSheet.create({
     color: '#ffffff',
     paddingTop: 5,
   },
+
+  // button style
 });
